@@ -11,6 +11,10 @@ class MemecoinAMM:
         # Token price in ETH
         return self.eth_reserve / self.token_reserve
     
+    def get_usd_price(self):
+        # Token price in ETH
+        return self.get_price()  * self.eth_price
+    
     def get_market_cap(self):
         # Market cap in USD
         return self.get_price() * self.coin_supply * self.eth_price
@@ -44,6 +48,7 @@ class MemecoinAMM:
         print(f"Coin Name: {self.coin_name}")
         print(f"Market Cap: ${self.get_market_cap():,.2f}")
         print(f"Token Price: {self.get_price():.6f} ETH")
+        print(f"Token price in usd: ${self.get_usd_price()}")
         print(f"Liquidity Volume: ${self.get_volume():,.2f}")
         print(f"ETH Reserve: {self.eth_reserve:.6f} ETH")
         print(f"Token Reserve: {self.token_reserve:,.6f} {self.coin_name}")
@@ -61,12 +66,13 @@ Available Commands:
 if __name__ == "__main__":
     # Initialize the AMM
     amm = MemecoinAMM(
-        eth_price=1800,  # ETH price in USD
+        eth_price=3590,  # ETH price in USD
         coin_name="MEME",
-        coin_supply=1_000_000,  # Total MEME supply
-        initial_eth=100,  # Initial ETH in the pool
-        initial_tokens=50_000  # Initial MEME in the pool
+        coin_supply=1337_000_000,  # Total MEME supply
+        initial_eth=5,  # Initial ETH in the pool
+        initial_tokens=133_700_000  # Initial MEME in the pool
     )
+    print(f"Inital supply {amm.coin_supply}")
     
     while True:
         cmd = input("Enter command (type 'help' for options): ").strip().lower()
