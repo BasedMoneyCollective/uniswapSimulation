@@ -69,8 +69,8 @@ if __name__ == "__main__":
         eth_price=3590,  # ETH price in USD
         coin_name="MEME",
         coin_supply=1337_000_000,  # Total MEME supply
-        initial_eth=5,  # Initial ETH in the pool
-        initial_tokens=133_700_000  # Initial MEME in the pool
+        initial_eth=2,  # Initial ETH in the pool
+        initial_tokens=1337_700_000  # Initial MEME in the pool
     )
     print(f"Inital supply {amm.coin_supply}")
     
